@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>课程信息显示</title>
+
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" /> 
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<!-- 引入bootstrap -->
+	<link rel="stylesheet" type="text/css" href="../../css/bootstrap.min.css">
+	<!-- 引入JQuery  bootstrap.js-->
+	<script src="../../js/jquery-3.2.1.min.js"></script>
+	<script src="../../js/bootstrap.min.js"></script>
+
+</head>
+<body>
+	<!-- 顶栏 -->
+	<!-- 顶栏 -->
+<div class="container" id="top">
+    <div class="row">
+        <div class="col-md-12">
+            <!--加入导航条标题-->
+            <div class="navbar navbar-default" role="navigation">
+                　<div class="navbar-header">
+                　    <a href="##" class="navbar-brand">教务信息查询系统(教师)</a>
+                　</div>
+                <form action="##" class="navbar-form navbar-right" rol="search">
+                    <div class="dropdown">
+                        <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" style="margin-right: 20px; ">
+                         
+                            <span class="glyphicon glyphicon-user">admin</span>
+                            <span class="caret"></span>
+                        </button>
+                        <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+                            <li role="presentation">
+                                <a role="menuitem" tabindex="-1" href="#">
+                                    <span class="glyphicon glyphicon-cog pull-right"></span>
+                                    修改个人信息
+                                </a>
+                            </li>
+                            <li role="presentation" class="divider"></li>
+                            <li role="presentation">
+                                <a role="menuitem" tabindex="-1" href="/logout">
+                                    <span class="glyphicon glyphicon-off pull-right"></span>
+                                    注销
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+
+                </form>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+	<!-- 中间主体 -->
+	<div class="container" id="content">
+		<div class="row">
+		<div class="col-md-2">
+    <ul class="nav nav-pills nav-stacked" id="nav">
+        <li><a href="showCourse.html">我的课程<span class="badge pull-right">8</span></a></li>
+        <li><a href="passwordRest.html">修改密码<sapn class="glyphicon glyphicon-pencil pull-right" /></a></li>
+        <li><a href="#">退出系统<sapn class="glyphicon glyphicon-log-out pull-right" /></a></li>
+    </ul>
+</div>
+			<div class="col-md-10">
+				<div class="panel panel-default">
+				    <div class="panel-heading">
+						<div class="row">
+					    	<h1 class="col-md-5">已选该课程学生名单</h1>
+						</div>
+				    </div>
+				    <table class="table table-bordered">
+					        <thead>
+					            <tr>
+									<th>学号</th>
+									<th>姓名</th>
+									<th>分数</th>
+									<th>操作</th>
+					            </tr>
+					        </thead>
+					        <tbody><tr>
+										<td>1001</td>
+										<td>马云</td>
+										<td>88</td>
+										<td>已打分</td>
+									</tr>
+									<tr>
+										<td>1002</td>
+										<td>马化腾}</td>
+										<td>未打分</td>
+										<td>
+											<button class="btn btn-default btn-xs btn-info">打分</button>
+										</td>
+									</tr>
+					        </tbody>
+				    </table>
+				    <div class="panel-footer">
+						<nav style="text-align: center">
+								<ul class="pagination">
+									<li><a href="#">&laquo;上一页</a></li>
+									<li class="active"><a href="">1</a></li>
+                                    <li><a href="">2</a></li>
+                                    <li><a href="">3</a></li>
+                                    <li><a href="">4</a></li>
+									<li><a href="#">最后一页&raquo;</a></li>
+								</ul>
+							</nav>
+				    </div>
+				</div>
+
+			</div>
+		</div>
+	</div>
+	<div class="container" id="footer">
+		<div class="row">
+			<div class="col-md-12"></div>
+		</div>
+	</div>
+</body>
+	<script type="text/javascript">
+		<%--设置菜单中--%>
+		$("#nav li:nth-child(1)").addClass("active")
+        <c:if test="${pagingVO != null}">
+        if (${pagingVO.curentPageNo} == ${pagingVO.totalCount}) {
+            $(".pagination li:last-child").addClass("disabled")
+        };
+
+        if (${pagingVO.curentPageNo} == ${1}) {
+            $(".pagination li:nth-child(1)").addClass("disabled")
+        };
+        </c:if>
+
+        function confirmd() {
+            var msg = "您真的确定要删除吗？！";
+            if (confirm(msg)==true){
+                return true;
+            }else{
+                return false;
+            }
+        }
+
+        $("#sub").click(function () {
+            $("#form1").submit();
+        });
+	</script>
+</html>
